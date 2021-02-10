@@ -25,33 +25,42 @@ namespace ConsoleUI
         private static void ProductTest()
         {
             ProductManager productManager = new ProductManager(new EfProductDal());
+            var result = productManager.GetProductDetails();
 
-            foreach (var product in productManager.GetByUnitPrice(40, 100))
+            if (result.Success==true)
             {
-                Console.WriteLine(product.ProductName);
+                foreach (var product in result.Data)
+                {
+                    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+                }
             }
-            Console.WriteLine("---------2 numaralı categoryid e sahip ürünler-----------------");
-
-            foreach (var product in productManager.GetAllByCategoryId(3))
+            else
             {
-                Console.WriteLine(product.ProductName);
-
-
+                Console.WriteLine(result.Message);
             }
-            Console.WriteLine("---------Stoktaki sayıya göre sıralanan ürünler-----------------");
+         
+            //Console.WriteLine("---------2 numaralı categoryid e sahip ürünler-----------------");
 
-            foreach (var product in productManager.GetByUnitsInStock(30, 60))
-            {
-                Console.WriteLine(product.ProductName);
-            }
-
-            Console.WriteLine("----------------JOINLEDİĞİMİZ KISMI YAZDIRMA----------------");
-            foreach (var product in productManager.GetProductDetails())
-            {
-                Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+            //foreach (var product in productManager.GetAllByCategoryId(3))
+            //{
+            //    Console.WriteLine(product.ProductName);
 
 
-            }
+            //}
+            //Console.WriteLine("---------Stoktaki sayıya göre sıralanan ürünler-----------------");
+
+            //foreach (var product in productManager.GetByUnitsInStock(30, 60))
+            //{
+            //    Console.WriteLine(product.ProductName);
+            //}
+
+            //Console.WriteLine("----------------JOINLEDİĞİMİZ KISMI YAZDIRMA----------------");
+            //foreach (var product in productManager.GetProductDetails())
+            //{
+            //    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+
+
+            //}
         }
     }
 }
