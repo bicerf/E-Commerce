@@ -31,8 +31,8 @@ namespace WebAPI
         {
             //Autofac,Ninject,CastleWindsorvb..--> IoC Container
             services.AddControllers();
-            services.AddSingleton<IProductService,ProductManager>(); //IoC kýsmý bu kadar iþte:)
-            services.AddSingleton<IProductDal,EfProductDal > (); //Eðer IProductDal istenirse ona EfProductDal ver
+            //services.AddSingleton<IProductService,ProductManager>(); //IoC kýsmý bu kadar iþte:)
+            //services.AddSingleton<IProductDal,EfProductDal > (); //Eðer IProductDal istenirse ona EfProductDal ver
 
         }
 
