@@ -18,6 +18,8 @@ namespace Business.Abstract
         IDataResult<Product>GetById(int productId);
 
         IResult Add(Product product); //burada IResult ı getirdik void yerine
-        
+        IResult Update(Product product);
+
+
     }   
 }
