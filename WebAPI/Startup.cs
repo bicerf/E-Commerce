@@ -20,6 +20,8 @@ using Core.Utilities.Security.Encryption;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Http;
 using Core.Utilities.IoC;
+using Core.Extensions;
+using Core.DependencResolver;
 
 namespace WebAPI
 {
@@ -58,8 +60,8 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-            ServiceTool.Create(services);
-
+            //ServiceTool.Create(services); //httpcontextaccessor u inject etmeye yarýyor serviceTool aracý çaðrýlaarak ama bunu iptal ettik alta yeni vers.yazdýk
+            services.AddDependencyResolvers(new ICoreModule[] {new CoreModule() });  //istediðimiz kadar module ekleyebiliriz buraya securityModule vs
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

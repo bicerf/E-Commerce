@@ -20,6 +20,8 @@ namespace Business.Abstract
         IResult Add(Product product); //burada IResult ı getirdik void yerine
         IResult Update(Product product);
 
+        IResult AddTransactionalTest(Product product); //Uygulamalarda tutarlığı kontrol etmek için örenğin para aktarımım sonrası updateler düşüş ve artış aktarıma göre
+
 
     }   
 }
